@@ -1,0 +1,78 @@
+<!doctype html>
+{% extends 'store/Main.html' %}
+{%load static%}
+{% block content %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/Main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+    <title>Profile</title>
+  </head>
+  <body>
+    <header>
+        <nav class="navbar">
+            <a href="{%url 'store'%}" class="logo">Profile</a>
+                <a class="profile-icon-link-container" href="{%url 'logout'%}">
+                    <div class="header-logout">Logout</div>
+                </a>
+        </nav>
+    </header>
+
+    <main class="main-container">
+            <form class = 'container' action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="profile-photo-container profile-photo-form-container">
+                    <p class="profile-page-heading">Edit your profile</p>
+                    <img src="{{user.profile.profile_img.url}}" alt="user-image" width="" srcset="">
+                    {{form.profile_img}}
+                </div>
+            
+
+                <div class="user-content-container user-profile-form-container">
+                    <ul>
+                        <li class="name">
+                            <label for="user-name">Your Name</label>
+                            {{form.name}}
+                        </li>
+                        <li class="title">
+                            <label for="user-title">Your title</label>
+                            {{form.title}}
+                        </li>
+                        <li class="desc">
+                            <label for="user-desc">Description</label>
+                            {{form.dec}}
+                        </li>
+                        <li class="desc">
+                            <label for="user-desc">Phone_number</label>
+                            {{form.phone}}
+                        </li>
+                    </ul>
+                    <button class="profile-save-button"> Save </button>
+                </div>
+            </form>
+    </main>
+
+    <script>
+
+    var id_name = document.getElementById('id_name')
+    var id_title = document.getElementById('id_title')
+    var id_desc = document.getElementById('id_desc')
+    var id_phone = document.getElementById('id_phone')
+    id_name.placeholder = 'Your Name'
+    id_title.placeholder = 'Your Title'
+    id_desc.placeholder = 'Description'
+    id_desc.placeholder = 'Phone_Number'
+
+    </script>
+
+  </body>
+</html>
+{% endblock content %}
