@@ -1,2 +1,2 @@
 # Arbuz.kz
-Just Assignment back-End
+ mini project back-End
